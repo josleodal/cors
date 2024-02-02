@@ -4,14 +4,14 @@ const axios = require('axios');
 const app = express();
 const PORT = 3014;
 
-// Middleware para permitir solicitudes CORS
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET');
     next();
 });
 
-// Ruta para obtener todos los personajes
+
 app.get('/characters', async (req, res) => {
     try {
         const response = await axios.get('https://rickandmortyapi.com/api/character');
@@ -22,7 +22,7 @@ app.get('/characters', async (req, res) => {
     }
 });
 
-// Ruta para obtener un personaje por nombre
+
 app.get('/characters/:name', async (req, res) => {
     const characterName = req.params.name;
 
@@ -40,7 +40,7 @@ app.get('/characters/:name', async (req, res) => {
     }
 });
 
-// Inicia el servidor
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
